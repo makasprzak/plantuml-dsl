@@ -177,7 +177,8 @@ public class ActivityGraphBuilder {
             @Override
             public String toPlantUML() {
                 return "else\n" +
-                       "  if \""+label+"\" then\n";
+                       "  -->[false] if \""+label+"\" then\n" +
+                       "  -->[true] ";
             }
         });
 

@@ -58,6 +58,34 @@ public class ActivityGraphBuilderTest {
 
     }
 
+    @Test
+    public void shouldCreateActivityGraphWithMultiCondition() throws Exception {
+        assertThat(
+                activityGraph()
+                        .start()
+                        .condition("A Condition")
+                            .whenTrue()
+                                .activity("When true action")
+                            .elseCondition("Another condition")
+                                .activity("This was else if")
+                            .whenFalse()
+                                .activity("When false action")
+                                .condition("Nested condition")
+                                    .whenTrue()
+                                        .activity("When nested condition true")
+                                    .whenFalse()
+                                        .activity("When nested condition false")
+                                .endIf()
+                        .endIf()
+                        .beginAnother()
+                            .activity("When true action").end()
+                        .beginAnother()
+                            .activity("When false action").end()
+                .build()
+        ).isEqualTo(read("/activityGraphWithMultiCondition.plantuml"));
+
+    }
+
     private String read(String path) throws IOException {
         return readFileToString(new File(getClass().getResource(path).getFile()),(String)null).replaceAll("\\r","");
     }

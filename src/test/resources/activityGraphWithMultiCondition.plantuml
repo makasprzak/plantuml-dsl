@@ -1,0 +1,21 @@
+@startuml
+
+(*) --> if "A Condition" then
+  -->[true] "When true action"
+else
+  -->[false] if "Another condition" then
+  -->[true] "This was else if"
+else
+  -->[false] "When false action"
+if "Nested condition" then
+  -->[true] "When nested condition true"
+else
+  -->[false] "When nested condition false"
+endif
+endif
+
+"When true action" --> (*)
+
+"When false action" --> (*)
+
+@enduml
