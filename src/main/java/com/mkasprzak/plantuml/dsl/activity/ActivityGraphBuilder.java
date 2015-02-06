@@ -2,7 +2,6 @@ package com.mkasprzak.plantuml.dsl.activity;
 
 import com.mkasprzak.plantuml.dsl.activity.levels.FirstNodeLevel;
 import com.mkasprzak.plantuml.dsl.activity.levels.impl.FirstNodeLevelBuilder;
-import com.mkasprzak.plantuml.dsl.activity.model.AbstractNode;
 import com.mkasprzak.plantuml.dsl.activity.model.Node;
 
 import java.util.LinkedList;
@@ -20,153 +19,153 @@ public class ActivityGraphBuilder {
     }
 
     public void firstNodeActivity(final String label) {
-        nodes.add(new AbstractNode() {
+        nodes.add(new Node() {
             @Override
-            protected String toPlantuml() {
+            public String toPlantUML() {
                 return "\""+label+"\" ";
             }
         });
     }
 
     public void firstNodeStart() {
-        nodes.add(new AbstractNode() {
+        nodes.add(new Node() {
             @Override
-            protected String toPlantuml() {
+            public String toPlantUML() {
                 return "(*) ";
             }
         });
     }
 
     public void secondNodeActivity(final String label) {
-        nodes.add(new AbstractNode() {
+        nodes.add(new Node() {
             @Override
-            protected String toPlantuml() {
+            public String toPlantUML() {
                 return "--> \""+label+"\"\n";
             }
         });
     }
 
     public void secondNodeCondition(final String label) {
-        nodes.add(new AbstractNode() {
+        nodes.add(new Node() {
             @Override
-            protected String toPlantuml() {
+            public String toPlantUML() {
                 return "--> if \""+label+"\" then\n";
             }
         });
     }
 
     public void secondNodeEnd() {
-        nodes.add(new AbstractNode() {
+        nodes.add(new Node() {
             @Override
-            protected String toPlantuml() {
+            public String toPlantUML() {
                 return "--> (*)\n";
             }
         });
     }
 
     public void generalLevelActivity(final String label) {
-        nodes.add(new AbstractNode() {
+        nodes.add(new Node() {
             @Override
-            protected String toPlantuml() {
+            public String toPlantUML() {
                 return "--> "+label+"\n";
             }
         });
     }
 
     public void generalLevelBeginAnother() {
-        nodes.add(new AbstractNode() {
+        nodes.add(new Node() {
             @Override
-            protected String toPlantuml() {
+            public String toPlantUML() {
                 return "\n";
             }
         });
     }
 
     public void generalLevelCondition(final String label) {
-        nodes.add(new AbstractNode() {
+        nodes.add(new Node() {
             @Override
-            protected String toPlantuml() {
+            public String toPlantUML() {
                 return "--> if \""+label+"\" then\n";
             }
         });
     }
 
     public void generalLevelEnd() {
-        nodes.add(new AbstractNode() {
+        nodes.add(new Node() {
             @Override
-            protected String toPlantuml() {
+            public String toPlantUML() {
                 return "--> (*)\n";
             }
         });
     }
 
     public void conditionLevelWhenTrue() {
-        nodes.add(new AbstractNode() {
+        nodes.add(new Node() {
             @Override
-            protected String toPlantuml() {
+            public String toPlantUML() {
                 return "  -->[true] ";
             }
         });
     }
 
     public void whenTrueFirstLevelActivity(final String label) {
-        nodes.add(new AbstractNode() {
+        nodes.add(new Node() {
             @Override
-            protected String toPlantuml() {
+            public String toPlantUML() {
                 return "\""+label+"\"\n";
             }
         });
     }
 
     public void whenTrueFirstLevelCondition(final String label) {
-        nodes.add(new AbstractNode() {
+        nodes.add(new Node() {
             @Override
-            protected String toPlantuml() {
+            public String toPlantUML() {
                 return "if \""+label+"\" then\n";
             }
         });
     }
 
     public void whenTrueFirstLevelEnd() {
-        nodes.add(new AbstractNode() {
+        nodes.add(new Node() {
             @Override
-            protected String toPlantuml() {
+            public String toPlantUML() {
                 return "(*)\n";
             }
         });
     }
 
     public void whenTrueFurtherLevelActivity(final String label) {
-        nodes.add(new AbstractNode() {
+        nodes.add(new Node() {
             @Override
-            protected String toPlantuml() {
+            public String toPlantUML() {
                 return "  --> \""+label+"\"\n";
             }
         });
     }
 
     public void whenTrueFurtherLevelCondition(final String label) {
-        nodes.add(new AbstractNode() {
+        nodes.add(new Node() {
             @Override
-            protected String toPlantuml() {
+            public String toPlantUML() {
                 return "  --> if \""+label+"\" then\n";
             }
         });
     }
 
     public void whenTrueFurtherLevelEnd() {
-        nodes.add(new AbstractNode() {
+        nodes.add(new Node() {
             @Override
-            protected String toPlantuml() {
+            public String toPlantUML() {
                 return "  --> (*)";
             }
         });
     }
 
     public void whenTrueFurtherLevelWhenFalse() {
-        nodes.add(new AbstractNode() {
+        nodes.add(new Node() {
             @Override
-            protected String toPlantuml() {
+            public String toPlantUML() {
                 return "else\n" +
                        "  -->[false] ";
             }
@@ -174,9 +173,9 @@ public class ActivityGraphBuilder {
     }
 
     public void whenTrueFurtherLevelElseCondition(final String label) {
-        nodes.add(new AbstractNode() {
+        nodes.add(new Node() {
             @Override
-            protected String toPlantuml() {
+            public String toPlantUML() {
                 return "else\n" +
                        "  if \""+label+"\" then\n";
             }
@@ -209,9 +208,9 @@ public class ActivityGraphBuilder {
     }
 
     public void whenFalseFurtherLevelEndIf() {
-        nodes.add(new AbstractNode() {
+        nodes.add(new Node() {
             @Override
-            protected String toPlantuml() {
+            public String toPlantUML() {
                 return "endif\n";
             }
         });
@@ -222,7 +221,7 @@ public class ActivityGraphBuilder {
                 .append("@startuml\n")
                 .append('\n');
         for (Node node : nodes) {
-            stringBuilder.append(node);
+            stringBuilder.append(node.toPlantUML());
         }
 
         return stringBuilder.append('\n')
