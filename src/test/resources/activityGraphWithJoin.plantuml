@@ -1,0 +1,9 @@
+@startuml
+
+"Source 1" --> "Some activity"
+--> (*)
+
+"Source 2" --> "Some other activity"
+--> (*)
+
+@enduml

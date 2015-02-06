@@ -1,0 +1,13 @@
+@startuml
+
+(*) --> if "A Condition" then
+  -->[true] "When true action"
+else
+  -->[false] "When false action"
+endif
+
+"When true action" --> (*)
+
+"When false action" --> (*)
+
+@enduml
