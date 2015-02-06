@@ -1,5 +1,5 @@
 # plantuml-dsl
-A Java fluent api for creating [PlantUML](http://plantuml.sourceforge.net/) diagrams (Currently only Activity graph supported).
+A Java fluent api for creating [PlantUML](http://plantuml.sourceforge.net/) diagrams (Currently only Activity diagram supported).
 Provides an easy to use builder for defining the diagrams. Example usage:
 
 ```java
