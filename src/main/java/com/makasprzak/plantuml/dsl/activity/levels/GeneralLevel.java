@@ -7,7 +7,7 @@ public interface GeneralLevel extends
         ActivityBuilderBase,
         End<GeneralLevel>,
         Activity<GeneralLevel>,
-        Condition<ConditionLevel>,
+        Condition<ConditionLevel<GeneralLevel>>,
         BeginAnother<FirstNodeLevel>,
         Build
 {
