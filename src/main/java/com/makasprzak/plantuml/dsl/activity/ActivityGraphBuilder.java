@@ -67,7 +67,7 @@ public class ActivityGraphBuilder {
         nodes.add(new Node() {
             @Override
             public String toPlantUML() {
-                return "--> "+label+"\n";
+                return "--> \""+label+"\"\n";
             }
         });
     }
