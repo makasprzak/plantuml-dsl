@@ -9,7 +9,7 @@ import static com.makasprzak.plantuml.dsl.activity.ActivityGraphBuilder.activity
 import static org.apache.commons.io.FileUtils.readFileToString;
 import static org.fest.assertions.Assertions.assertThat;
 
-public class ActivityGraphBuilderTest {
+public class ActivityStepGraphBuilderTest {
     @Test
     public void shouldCreateBasicActivityGraphWithStartEndAndOneActivity() throws Exception {
         assertThat(
